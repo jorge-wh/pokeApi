@@ -1,0 +1,35 @@
+{%  extends 'base/base.html' %}
+
+{% block content %}
+    
+<div class="container">
+    
+    <h2>Lista de Pokemones</h2>
+    
+    <div class="row mb-5">
+        {% if pokemons %}
+    
+            {% for pokemon, value in pokemons.items  %}
+        
+            <div class="col-md-4">
+                <div class="card-deck">
+                    <div class="card" style="margin: 10px; border: 10px solid rgba(129,149,217);">
+                        <img src="{{ value.foto }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ value.nombre }}</h5>
+                            
+                            <a href="{% url 'pokemon' value.id %}" class="btn btn-sm btn-primary">Caracteristicas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            {% endfor  %}
+    
+        {% endif %}
+    
+    </div>
+   
+</div>
+
+{% endblock %}

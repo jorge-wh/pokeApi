@@ -1,0 +1,45 @@
+{%  extends 'base/base.html' %}
+
+    {% block content %}
+
+    <div class="container">
+    
+        <h2>Ficha del Pokemon</h2>
+        
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="card-deck">
+                    <div class="card" style="margin: 10px; border: 10px solid rgba(129,149,217);">
+                        <img src="{{ photo }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ name }}</h5>
+                            <p class="card-text">Peso: {{ weight }}</p>
+                            <p class="card-text">Altura: {{ height }}</p>
+                            <h5 class="card-title">Habilidades</h5>
+                            
+                                {% for ability, value in get_abilities.items  %}
+                                <ul>
+                                    <li>{{ value.ability }}</li>
+                                </ul>
+                                {% endfor %}
+
+                            <h5 class="card-title">Movimientos</h5>
+                                
+                                {% for move, value in get_moves.items %}
+                                <ul>
+                                    <li>{{ value.move }}</li>
+                                </ul>
+                                {% endfor %}
+
+                            <a href="{% url 'tipos' tipo %}" class="btn btn-sm btn-primary">Tipo: {{ tipo }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    
+
+    {% endblock %}
